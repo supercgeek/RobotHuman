@@ -2,14 +2,14 @@
 <h1>Hello</h1>
 <script>
 
-  var client = mqtt.connect('mqtt://killgrepcrungle:5adddbaedb6e7c52@broker.shiftr.ioFull', {
+  var client = mqtt.connect('http://killgrepcrungle:5adddbaedb6e7c52@broker.shiftr.ioFull', {
     clientId: 'javascript'
   });
 
   client.on('connect', function(){
     console.log('client has connected!');
 
-    // client.subscribe('/example');
+    client.subscribe('/test');
     // client.unsubscribe('/example');
 
     setInterval(
