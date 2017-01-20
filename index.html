@@ -141,59 +141,32 @@ button {
 <script>
   var client = mqtt.connect('mqtt://killgrepcrungle:5adddbaedb6e7c52@broker.shiftr.io', {clientId: 'javascript'});
 
+ client.on('connect');  // ALL
+      client.subscribe('/reco');
 
 function left()
     {
-     client.on('connect', function(){  // LEFT
 
-  console.log('client has connected!');
 
-  client.subscribe('/reco');
-    setInterval(
-      function(){client.publish('/vect', "left");
-    });
-  }
-  );
+    client.publish('/vect', "left");
+
+
     }
 
 function right()
     {
-          client.on('connect', function(){  // RIGHT
+          client.publish('/vect', "right");
 
-  console.log('client has connected!');
-
-  client.subscribe('/reco');
-    setInterval(
-      function(){client.publish('/vect', "right");
-    });
-  }
-  );
     }
 
 function forward()
     {
-      console.log("reco");
-  client.on('connect', function(){  // FORWARD
-  console.log('client has connected!');
-  client.subscribe('/reco');
-    setInterval(
-      function(){client.publish('/vect', "forward");
-    });
-  }
-  );
+      client.publish('/vect', "forward");
     }
 
 function backward()
     {
-   client.on('connect', function(){  // BACKWARD
-  console.log('client has connected!');
-  client.subscribe('/reco');
-    setInterval(
-      function(){client.publish('/vect', "backward");
-    });
-  }
-  );
-
+   client.publish('/vect', "backward");
 
     }
 
@@ -202,7 +175,7 @@ function backward()
   
 
 
-        
+        }
 </script>
 </body>
 
