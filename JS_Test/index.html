@@ -1,0 +1,28 @@
+<script src="https://assets.shiftr.io/js/mqtt-latest.js"></script>
+<h1>Hello</h1>
+<script>
+
+  var client = mqtt.connect('mqtt://killgrepcrungle:5adddbaedb6e7c52@broker.shiftr.io', {
+    clientId: 'javascript'
+  });
+
+  client.on('connect', function(){
+    console.log('client has connected!');
+
+    client.subscribe('/test');
+    // client.unsubscribe('/example');
+
+    setInterval(
+      function(){client.publish('/vect', "hello");}
+      , 1000);
+  }
+);
+
+//   client.on('message', // reading
+
+//   function(topic, message) {
+//     console.log('new message:', topic, message.toString());
+//   }
+// );
+
+</script>
