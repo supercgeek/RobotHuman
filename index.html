@@ -146,30 +146,30 @@ $(document).keydown(function(e){
     if (e.keyCode == 37) { 
        left();
        return false;
-    }
+    }})
 
 $(document).keydown(function(e){
     if (e.keyCode == 39) { 
        right();
        return false;
-    }
+    }})
 
 
 $(document).keydown(function(e){
     if (e.keyCode == 38) { 
        forward();
        return false;
-    }
+    }})
 
 
 $(document).keydown(function(e){
     if (e.keyCode == 40) { 
        backward();
        return false;
-    }
+    }})
 
 
-});
+
   var client = mqtt.connect('mqtt://killgrepcrungle:5adddbaedb6e7c52@broker.shiftr.io', {clientId: 'javascript'});
 
   client.on('connect');  // ALL
