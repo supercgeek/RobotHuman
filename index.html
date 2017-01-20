@@ -141,41 +141,25 @@ button {
 <script>
   var client = mqtt.connect('mqtt://killgrepcrungle:5adddbaedb6e7c52@broker.shiftr.io', {clientId: 'javascript'});
 
- client.on('connect');  // ALL
-      client.subscribe('/reco');
+  client.on('connect');  // ALL
+  client.subscribe('/reco');
 
-function left()
-    {
-
-
+function left(){
     client.publish('/vect', "left");
-
-
     }
 
-function right()
-    {
-          client.publish('/vect', "right");
-
+function right(){
+    client.publish('/vect', "right");
     }
 
-function forward()
-    {
-      client.publish('/vect', "forward");
+function forward(){
+    client.publish('/vect', "forward");
     }
 
-function backward()
-    {
-   client.publish('/vect', "backward");
-
+function backward(){
+    client.publish('/vect', "backward");
     }
-
-
-
-  
-
-
-        }
+}
 </script>
 </body>
 
