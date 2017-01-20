@@ -2,7 +2,7 @@
 <h1>Hello</h1>
 <script>
 
-  var client = mqtt.connect('mqtt://killgrepcrungle:5adddbaedb6e7c52@broker.shiftr.ioFull', {
+  var client = mqtt.connect('mqtt://killgrepcrungle:5adddbaedb6e7c52@broker.shiftr.io', {
     clientId: 'javascript'
   });
 
@@ -13,16 +13,16 @@
     // client.unsubscribe('/example');
 
     setInterval(
-      function(){client.publish('/test', 'world');}
+      function(){client.publish('/vect', 01);}
       , 1000);
   }
 );
 
-  client.on('message',
+//   client.on('message', // reading
 
-  function(topic, message) {
-    console.log('new message:', topic, message.toString());
-  }
-);
+//   function(topic, message) {
+//     console.log('new message:', topic, message.toString());
+//   }
+// );
 
 </script>
