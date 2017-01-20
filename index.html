@@ -1,6 +1,9 @@
 <doctype html>
 <script src="https://assets.shiftr.io/js/mqtt-latest.js"></script>
-
+<script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
 
 <html>
   <head>
@@ -9,7 +12,10 @@
     </title>
 
     <style type ="text/css">
-
+body
+{
+overflow: hidden;
+}
         body {
           
          
@@ -97,10 +103,6 @@ button {
 
 <h1>Web Robot Control   <img style="height: 50px"> </h1>
 <table style="margin: 0px auto;" cellspacing="50">
-<th>
-<h1> Live Video
-</h1> 
-<th>
 <tr>
 
     <td> <iframe src="https://www.youtube.com/embed/xVLFyTTdTPk" frameborder="0" align="left" width="640" height="480" align="left" scrolling="no"></iframe>
@@ -120,12 +122,12 @@ button {
     <button style = "height: 50px; width: 100px" onclick="forward()"><img style="height: 43px;" src = "new-img/up-arrow.png"></button>
       <br><br><br><br>
       <img hspace="10" style="padding-left: 5px">
-      <button style="height: 50px; width: 100px" onclick="left()"><img style="height: 43px;" src="new-img/left-arrow.png"></button>
+      <button style="height: 50px; width: 100px" onclick="left()"><img style="height: 43px;" src = "new-img/left-arrow.png"></button>
       <img hspace="20" style="padding-left: 100px">
-      <button style="height: 50px; width: 100px" onclick="right()"><img style="height: 43px;" src="new-img/right-arrow.png"></button>
+      <button style="height: 50px; width: 100px" onclick="right()"><img style="height: 43px;" src = "new-img/right-arrow.png"></button>
       <img hspace="10" style="padding-left: 5px">
       <br><br><br><br>
-      <button style="height: 50px; width: 100px" onclick="backward()"><img style=" height: 43px;" src="new-img/down-arrow.png"></button>
+      <button style="height: 50px; width: 100px" onclick="backward()"><img style=" height: 43px;" src = "new-img/down-arrow.png"></button>
 
 
 </tr>
@@ -139,11 +141,34 @@ button {
 
 
 <script>
+
 $(document).keydown(function(e){
-    if (e.keyCode == 40) { 
-       alert( "left pressed" );
+    if (e.keyCode == 37) { 
+       left();
        return false;
     }
+
+$(document).keydown(function(e){
+    if (e.keyCode == 39) { 
+       right();
+       return false;
+    }
+
+
+$(document).keydown(function(e){
+    if (e.keyCode == 38) { 
+       forward();
+       return false;
+    }
+
+
+$(document).keydown(function(e){
+    if (e.keyCode == 40) { 
+       backward();
+       return false;
+    }
+
+
 });
   var client = mqtt.connect('mqtt://killgrepcrungle:5adddbaedb6e7c52@broker.shiftr.io', {clientId: 'javascript'});
 
