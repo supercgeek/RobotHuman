@@ -1,4 +1,7 @@
 <doctype html>
+<script src="https://assets.shiftr.io/js/mqtt-latest.js"></script>
+
+
 <html>
   <head>
     
@@ -122,7 +125,7 @@ button {
       <button style="height: 50px; width: 100px" onclick="right()"><img style="height: 43px;" src="new-img/right-arrow.png"></button>
       <img hspace="10" style="padding-left: 5px">
       <br><br><br><br>
-      <button style="height: 50px; width: 100px" onclick="reverse()"><img style=" height: 43px;" src="new-img/down-arrow.png"></button>
+      <button style="height: 50px; width: 100px" onclick="backward()"><img style=" height: 43px;" src="new-img/down-arrow.png"></button>
 
 
 </tr>
@@ -136,117 +139,68 @@ button {
 
 
 <script>
-var xmlhttp;
-xmlhttp=new XMLHttpRequest();
+  var client = mqtt.connect('mqtt://killgrepcrungle:5adddbaedb6e7c52@broker.shiftr.io', {clientId: 'javascript'});
 
-function lighton()
-    {
-        xmlhttp.open("GET","cgi-bin/lighton.cgi",true);
-        xmlhttp.send();
-    }
-function lightoff()
-    {
-        xmlhttp.open("GET","cgi-bin/lightoff.cgi",true);
-        xmlhttp.send();
-    }
-function forward()
-{
-  xmlhttp.open("GET","cgi-bin/forward.cgi",true);
-  xmlhttp.send();
-}
-function stop()
-{
-  xmlhttp.open("GET","cgi-bin/stop.cgi",true);
-  xmlhttp.send();
-}
+
 function left()
-{
-  xmlhttp.open("GET","cgi-bin/left.cgi",true);
-  xmlhttp.send();
-}
+    {
+     client.on('connect', function(){  // LEFT
+
+  console.log('client has connected!');
+
+  client.subscribe('/reco');
+    setInterval(
+      function(){client.publish('/vect', "left");
+    });
+  }
+  );
+    }
+
 function right()
-{
-  xmlhttp.open("GET","cgi-bin/right.cgi",true);
-  xmlhttp.send();
-}
-function reverse()
-{
-  xmlhttp.open("GET","cgi-bin/reverse.cgi",true);
-  xmlhttp.send();
-}
+    {
+          client.on('connect', function(){  // RIGHT
 
-function lowspeed()
-{
-  xmlhttp.open("GET","cgi-bin/lowspeed.cgi",true);
-  xmlhttp.send();
-}
-function regularspeed()
-{
-  xmlhttp.open("GET","cgi-bin/regularspeed.cgi",true);
-  xmlhttp.send();
-}
-function highspeed()
-{
-  xmlhttp.open("GET","cgi-bin/highspeed.cgi",true);
-  xmlhttp.send();
-}
-function nospeed()
-{
-  xmlhttp.open("GET","cgi-bin/nospeed.cgi",true);
-  xmlhttp.send();
-}
+  console.log('client has connected!');
+
+  client.subscribe('/reco');
+    setInterval(
+      function(){client.publish('/vect', "right");
+    });
+  }
+  );
+    }
+
+function forward()
+    {
+  client.on('connect', function(){  // FORWARD
+  console.log('client has connected!');
+  client.subscribe('/reco');
+    setInterval(
+      function(){client.publish('/vect', "forward");
+    });
+  }
+  );
+    }
+
+function backward()
+    {
+   client.on('connect', function(){  // BACKWARD
+  console.log('client has connected!');
+  client.subscribe('/reco');
+    setInterval(
+      function(){client.publish('/vect', "backward");
+    });
+  }
+  );
 
 
-function downtilt()
-{
-    xmlhttp.open("GET","cgi-bin/downtilt.cgi",true);
-    xmlhttp.send();
-}
-function downcentertilt()
-{
-    xmlhttp.open("GET","cgi-bin/downcentertilt.cgi",true);
-    xmlhttp.send();
-}
-function centertilt()
-{
-    xmlhttp.open("GET","cgi-bin/centertilt.cgi",true);
-    xmlhttp.send();
-}
-function upcentertilt()
-{
-    xmlhttp.open("GET","cgi-bin/upcentertilt.cgi",true);
-    xmlhttp.send();
-}
-function uptilt()
-{
-    xmlhttp.open("GET","cgi-bin/uptilt.cgi",true);
-    xmlhttp.send();
-}
-function leftpan()
-{
-    xmlhttp.open("GET","cgi-bin/leftpan.cgi",true);
-    xmlhttp.send();
-}
-function leftCenterPan()
-{
-    xmlhttp.open("GET","cgi-bin/leftCenterPan.cgi",true);
-    xmlhttp.send();
-}
-function centerpan()
-{
-    xmlhttp.open("GET","cgi-bin/centerpan.cgi",true);
-    xmlhttp.send();
-}
-function rightCenterPan()
-{
-    xmlhttp.open("GET","cgi-bin/rightCenterPan.cgi",true);
-    xmlhttp.send();
-}
-function rightpan()
-{
-    xmlhttp.open("GET","cgi-bin/rightpan.cgi",true);
-    xmlhttp.send();
-        }
+    }
+
+
+
+  
+
+
         
 </script>
 </body>
